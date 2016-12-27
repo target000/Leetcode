@@ -37,6 +37,7 @@ public class ExcelColumnNumber {
 
     // Better
     public static int titleToNumber2(String s) {
+
         if (s == null || s.length() == 0) {
             throw new IllegalArgumentException("Input is not valid!");
         }
@@ -44,7 +45,7 @@ public class ExcelColumnNumber {
         int result = 0;
         int len = s.length() - 1;
         int i = 0;
-        
+
         // len will ensure that it goes from right to left
         while (len >= 0) {
             char curr = s.charAt(len);
