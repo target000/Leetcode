@@ -35,7 +35,7 @@ public class SetSubtraction {
         System.out.println(set.toString());
 
         // assuming there is duplicates in the subtract list
-        // go thru the first array and search if the 2nd array is in the list
+        // go thru the first list and search if the 2nd  is in the list
 
     }
 
