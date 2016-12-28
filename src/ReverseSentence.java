@@ -2,7 +2,7 @@
 public class ReverseSentence {
 
     public static void main(String[] args) {
-        // want: " I love this crap " --> "crap this love I"
+        // goal: " I love this crap " --> "crap this love I"
 
         String str1 = " you should know this this well by  now  ";
         String str2 = "";
@@ -36,10 +36,5 @@ public class ReverseSentence {
         sb.append(strArr[0]);
 
         return sb.toString();
-    }
-
-    // do it in-place
-    public static void reverseArray(int[] arr) {
-        
     }
 }

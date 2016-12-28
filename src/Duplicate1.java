@@ -6,13 +6,14 @@ public class Duplicate1 {
 
     }
 
+    // O(n)
     public static boolean containsDuplicate(int[] nums) {
         if (nums == null || nums.length == 0)
             return false;
 
         Set<Integer> set = new HashSet<Integer>();
-        for (int i : nums) {
-            if (!set.add(i)) {
+        for (int num : nums) {
+            if (!set.add(num)) {
                 return true;
             }
         }
