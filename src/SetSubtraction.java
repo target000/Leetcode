@@ -4,7 +4,7 @@ import java.util.Set;
 
 public class SetSubtraction {
     public static void main(String[] args) {
-
+        // this is probabaly the easist way to do it
         Set<Integer> set = new HashSet<Integer>();
 
         int[] arr1 = { 1, 2, 3 };
@@ -33,6 +33,9 @@ public class SetSubtraction {
 
         System.out.println("set");
         System.out.println(set.toString());
+
+        // assuming there is duplicates in the subtract list
+        // go thru the first array and search if the 2nd array is in the list
 
     }
 
