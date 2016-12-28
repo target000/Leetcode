@@ -26,17 +26,18 @@ public class SAPXor {
 
     // use hashmap key is char, val is occurence
     public static int findSingle2(int[] arr) {
+
+        // what is the best way to tell which one has value 1
         
         HashMap<Character, Integer> map = new HashMap<Character, Integer>();
-        
-        
-        
+
+        return -1;
+
     }
 
     // use set, if appears once + to sum , twice minus from sum
     public static int findSingle3(int[] arr) {
-        
+        return -1;
     }
-    
 
 }
