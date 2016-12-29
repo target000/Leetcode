@@ -10,6 +10,7 @@ public class TestAnagram {
         int[] arr = new int[26];
 
         for (int i = 0; i < s.length(); i++) {
+            // this is a very typical technique of normalizing char to zero-baesd integer
             arr[s.charAt(i) - 'a']++;
             arr[t.charAt(i) - 'a']--;
         }
