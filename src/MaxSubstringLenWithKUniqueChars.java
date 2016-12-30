@@ -4,7 +4,7 @@ import java.util.Map;
 class Max {
 
     public static void main(String[] args) {
-
+        // need brute force as well
     }
 
     public int lengthOfLongestSubstringKDistinct(String s, int k) {
@@ -18,6 +18,7 @@ class Max {
 
         int maxLen = k;
         int left = 0;
+        
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
             if (map.containsKey(c)) {
