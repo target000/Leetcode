@@ -2,6 +2,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 class LRUCache {
+
+    public static void main(String[] args) {
+        LRUCache lruCache = new LRUCache(4);
+
+        lruCache.set(1, 1);
+        lruCache.set(2, 2);
+        lruCache.set(3, 3);
+        lruCache.set(4, 4);
+        lruCache.set(5, 5);
+
+        // note 1 has been pushed out of the cache
+        System.out.println(lruCache.get(2));
+
+    }
+
     private int capacity;
     private Map<Integer, Node> map = new HashMap<Integer, Node>();
     private Node head = null;
