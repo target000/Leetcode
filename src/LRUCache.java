@@ -10,7 +10,7 @@ class LRUCache {
 
     public LRUCache(int capacity) {
         this.capacity = capacity;
-        map = new HashMap<Integer, Node>();
+        map = new HashMap<Integer, Node>(); // lazy initialization
     }
 
     public int get(int key) {
@@ -49,6 +49,7 @@ class LRUCache {
             node.pre.next = node.next;
         } else {
             head = node.next;
+            head.pre = null;
         }
 
         if (node.next != null) {
@@ -92,6 +93,7 @@ class LRUCache {
 }
 
 // doubly linked list
+// the node cannot have just the value due to map element removal
 class Node {
     int key;
     int value;
