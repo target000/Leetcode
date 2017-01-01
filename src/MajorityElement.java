@@ -11,6 +11,7 @@ public class MajorityElement {
 
     }
 
+    // O(n)
     public static int findMajority(int[] arr) throws IllegalArgumentException {
 
         Map<Integer, Integer> map = new HashMap<Integer, Integer>();
@@ -31,4 +32,7 @@ public class MajorityElement {
 
         throw new IllegalArgumentException();
     }
+
+    // O(n*log(n)) sort the array and return the mid element
+
 }

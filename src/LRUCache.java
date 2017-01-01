@@ -1,22 +1,18 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class LRUCache {
-
-    public static void main(String[] args) {
-        // test here
-    }
-
-    int capacity;
-    Map<Integer, Node> map = new HashMap<Integer, Node>();
-    Node head = null;
-    Node end = null;
+class LRUCache {
+    private int capacity;
+    private Map<Integer, Node> map = new HashMap<Integer, Node>();
+    private Node head = null;
+    private Node end = null;
 
     public LRUCache(int capacity) {
         this.capacity = capacity;
     }
 
     public int get(int key) {
+
         if (map.containsKey(key)) {
             Node n = map.get(key);
             remove(n);
@@ -25,6 +21,35 @@ public class LRUCache {
         }
 
         return -1;
+    }
+
+    public void remove(Node n) {
+
+        if (n.pre != null) {
+            n.pre.next = n.next;
+        } else {
+            head = n.next;
+        }
+
+        if (n.next != null) {
+            n.next.pre = n.pre;
+        } else {
+            end = n.pre;
+        }
+
+    }
+
+    public void setHead(Node n) {
+        n.next = head;
+        n.pre = null;
+
+        if (head != null)
+            head.pre = n;
+
+        head = n;
+
+        if (end == null)
+            end = head;
     }
 
     public void set(int key, int value) {
@@ -47,34 +72,6 @@ public class LRUCache {
             map.put(key, created);
         }
     }
-
-    public void remove(Node n) {
-        if (n.pre != null) {
-            n.pre.next = n.next;
-        } else {
-            head = n.next;
-        }
-
-        if (n.next != null) {
-            n.next.pre = n.pre;
-        } else {
-            end = n.pre;
-        }
-    }
-
-    public void setHead(Node n) {
-        n.next = head;
-        n.pre = null;
-
-        if (head != null)
-            head.pre = n;
-
-        head = n;
-
-        if (end == null)
-            end = head;
-    }
-
 }
 
 class Node {

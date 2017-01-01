@@ -18,6 +18,7 @@ public class SetSubtraction {
             set.remove(i);
         }
 
+        // get the wrapper version, can i directly get the primitive array version?
         Integer[] arrOut = set.toArray(new Integer[set.size()]);
         System.out.println("Integer");
         System.out.println(Arrays.toString(arrOut));
@@ -28,15 +29,15 @@ public class SetSubtraction {
             arrOut2[i++] = integer.intValue();
         }
 
+        // get the array version
         System.out.println("int");
         System.out.println(Arrays.toString(arrOut2));
 
+        // get the set version
         System.out.println("set");
         System.out.println(set.toString());
 
-        // assuming there is duplicates in the subtract list
-        // go thru the first list and search if the 2nd  is in the list
-
+        // should come up wtih a way to handle duplicates
     }
 
 }
