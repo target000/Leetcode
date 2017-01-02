@@ -1,28 +1,23 @@
 import java.util.Arrays;
 
-/****************************************************************************
- * This demonstrates binary heap operations along with the heapSort.
- *
- *****************************************************************************/
-
 @SuppressWarnings("unchecked")
-public class Heap<AnyType extends Comparable<AnyType>> {
+public class Heap<T extends Comparable<T>> {
     private static final int CAPACITY = 2;
 
     private int size; // Number of elements in heap
-    private AnyType[] heap; // The heap array
+    private T[] heap; // The heap array
 
     public Heap() {
         size = 0;
-        heap = (AnyType[]) new Comparable[CAPACITY];
+        heap = (T[]) new Comparable[CAPACITY];
     }
 
     /**
      * Construct the binary heap given an array of items.
      */
-    public Heap(AnyType[] array) {
+    public Heap(T[] array) {
         size = array.length;
-        heap = (AnyType[]) new Comparable[array.length + 1];
+        heap = (T[]) new Comparable[array.length + 1];
 
         System.arraycopy(array, 0, heap, 1, array.length);// we do not use 0 index
 
@@ -39,7 +34,7 @@ public class Heap<AnyType extends Comparable<AnyType>> {
     }
 
     private void percolatingDown(int k) {
-        AnyType tmp = heap[k];
+        T tmp = heap[k];
         int child;
 
         for (; 2 * k <= size; k = child) {
@@ -59,14 +54,14 @@ public class Heap<AnyType extends Comparable<AnyType>> {
     /**
      * Sorts a given array of items.
      */
-    public void heapSort(AnyType[] array) {
+    public void heapSort(T[] array) {
         size = array.length;
-        heap = (AnyType[]) new Comparable[size + 1];
+        heap = (T[]) new Comparable[size + 1];
         System.arraycopy(array, 0, heap, 1, size);
         buildHeap();
 
         for (int i = size; i > 0; i--) {
-            AnyType tmp = heap[i]; // move top item to the end of the heap array
+            T tmp = heap[i]; // move top item to the end of the heap array
             heap[i] = heap[1];
             heap[1] = tmp;
             size--;
@@ -79,10 +74,10 @@ public class Heap<AnyType extends Comparable<AnyType>> {
     /**
      * Deletes the top item
      */
-    public AnyType deleteMin() throws RuntimeException {
+    public T deleteMin() throws RuntimeException {
         if (size == 0)
             throw new RuntimeException();
-        AnyType min = heap[1];
+        T min = heap[1];
         heap[1] = heap[size--];
         percolatingDown(1);
         return min;
@@ -91,7 +86,7 @@ public class Heap<AnyType extends Comparable<AnyType>> {
     /**
      * Inserts a new item
      */
-    public void insert(AnyType x) {
+    public void insert(T x) {
         if (size == heap.length - 1)
             doubleSize();
 
@@ -106,8 +101,8 @@ public class Heap<AnyType extends Comparable<AnyType>> {
     }
 
     private void doubleSize() {
-        AnyType[] old = heap;
-        heap = (AnyType[]) new Comparable[heap.length * 2];
+        T[] old = heap;
+        heap = (T[]) new Comparable[heap.length * 2];
         System.arraycopy(old, 1, heap, 1, size);
     }
 

@@ -5,6 +5,7 @@ public class ArrayRotation {
     }
 
     // Common method
+    // O(n) time O(n) space
     public void rotate(int[] nums, int k) {
         if (k > nums.length)
             k = k % nums.length;
@@ -24,7 +25,7 @@ public class ArrayRotation {
         System.arraycopy(result, 0, nums, 0, nums.length);
     }
 
-    // Bubble
+    // Bubble O(n^2)
     public static void rotate2(int[] arr, int order) {
         if (arr == null || order < 0) {
             throw new IllegalArgumentException("Illegal argument!");
@@ -39,7 +40,7 @@ public class ArrayRotation {
         }
     }
 
-    // O(n) time O(1) space
+    // O(n) time O(1) space, in-place algorithm
     public static void rotate3(int[] arr, int order) {
         if (arr == null || arr.length == 0 || order < 0) {
             throw new IllegalArgumentException("Illegal argument!");
@@ -58,7 +59,7 @@ public class ArrayRotation {
 
     }
 
-    // I have a for loop version
+    // I have a for loop version, while loop is intersting as well
     public static void reverse(int[] arr, int left, int right) {
         if (arr == null || arr.length == 1)
             return;
