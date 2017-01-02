@@ -4,19 +4,22 @@ public class SortedArr2Tree {
 
         int[] arr = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-        Node root = sortedArr2BST(arr, 0, arr.length - 1);
+        Node root = arr2BST(arr);
 
-        inOrderTraversal(root);
+        inOrder(root);
     }
 
-    // it is actually not that intutitive
-    public static void inOrderTraversal(Node root) {
-        if (root != null) {
-            inOrderTraversal(root.left);
-            System.out.println(root.val);
-            inOrderTraversal(root.right);
+    public static void inOrder(Node cur) {
+        if (cur != null) {
+            inOrder(cur.left);
+            System.out.println(cur.val);
+            inOrder(cur.right);
         }
     }
+
+    // preorder
+
+    // postorder
 
     public static Node sortedArr2BST(int[] arr, int low, int high) {
         if (low > high) {
@@ -32,6 +35,10 @@ public class SortedArr2Tree {
 
         return n;
 
+    }
+
+    public static Node arr2BST(int[] arr) {
+        return sortedArr2BST(arr, 0, arr.length - 1);
     }
 
 }
