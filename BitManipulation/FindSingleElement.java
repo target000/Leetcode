@@ -1,7 +1,6 @@
 import java.util.HashMap;
-import java.util.Map;
 
-public class SAPXor {
+public class FindSingleElement {
     // given an array with every element appears twice except for one
     // find that element
     public static void main(String[] args) {
@@ -28,7 +27,7 @@ public class SAPXor {
     public static int findSingle2(int[] arr) {
 
         // what is the best way to tell which one has value 1
-        
+
         HashMap<Character, Integer> map = new HashMap<Character, Integer>();
 
         return -1;
