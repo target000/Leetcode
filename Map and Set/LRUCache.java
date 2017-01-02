@@ -4,19 +4,19 @@ import java.util.Map;
 class LRUCache {
 
     private int capacity;
-    private Map<Integer, Node> map;
-    private Node head;
-    private Node tail;
+    private Map<Integer, LRUnode> map;
+    private LRUnode head;
+    private LRUnode tail;
 
     public LRUCache(int capacity) {
         this.capacity = capacity;
-        map = new HashMap<Integer, Node>(); // lazy initialization
+        map = new HashMap<Integer, LRUnode>(); // lazy initialization
     }
 
     public int get(int key) {
 
         if (map.containsKey(key)) {
-            Node node = map.get(key);
+            LRUnode node = map.get(key);
             remove(node);
             setHead(node);
             return node.value;
@@ -27,12 +27,12 @@ class LRUCache {
 
     public void set(int key, int value) {
         if (map.containsKey(key)) {
-            Node oldNode = map.get(key);
+            LRUnode oldNode = map.get(key);
             oldNode.value = value;
             remove(oldNode);
             setHead(oldNode);
         } else {
-            Node newNode = new Node(key, value);
+            LRUnode newNode = new LRUnode(key, value);
             if (map.size() >= capacity) {
                 map.remove(tail.key);
                 remove(tail);
@@ -43,7 +43,7 @@ class LRUCache {
         }
     }
 
-    public void remove(Node node) {
+    public void remove(LRUnode node) {
 
         if (node.pre != null) {
             node.pre.next = node.next;
@@ -60,7 +60,7 @@ class LRUCache {
 
     }
 
-    public void setHead(Node node) {
+    public void setHead(LRUnode node) {
         node.next = head;
         node.pre = null;
 
@@ -89,19 +89,21 @@ class LRUCache {
         System.out.println(lruCache.get(2));
 
     }
+    
+ // doubly linked list
+ // the node cannot have just the value due to map element removal
+ class LRUnode {
+     int key;
+     int value;
+     LRUnode pre;
+     LRUnode next;
+
+     public LRUnode(int key, int value) {
+         this.key = key;
+         this.value = value;
+     }
+ }
 
 }
 
-// doubly linked list
-// the node cannot have just the value due to map element removal
-class Node {
-    int key;
-    int value;
-    Node pre;
-    Node next;
 
-    public Node(int key, int value) {
-        this.key = key;
-        this.value = value;
-    }
-}
