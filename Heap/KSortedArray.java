@@ -1,11 +1,12 @@
 import java.util.Arrays;
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 class KSortedArray {
 
     public static int[] mergeKSortedArray(int[][] arr) {
         // PriorityQueue is heap in Java
-        PriorityQueue<ArrayContainer> queue = new PriorityQueue<ArrayContainer>();
+        Queue<ArrayContainer> queue = new PriorityQueue<ArrayContainer>();
         int total = 0;
 
         // add arrays to heap
