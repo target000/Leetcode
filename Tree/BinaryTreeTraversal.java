@@ -19,15 +19,15 @@ public class BinaryTreeTraversal {
     }
 
     public static List<Integer> inOrderTraversal(TreeNode root) {
-        // IMPORTANT: Please reset any member data you declared, as
-        // the same Solution instance will be reused for each test case.
+
         List<Integer> list = new ArrayList<Integer>();
 
-        if (root == null)
+        if (root == null) {
             return list;
+        }
 
         Deque<TreeNode> stack = new ArrayDeque<TreeNode>();
-        // define a pointer to track nodes
+
         TreeNode cur = root;
 
         while (!stack.isEmpty() || cur != null) {
@@ -40,7 +40,7 @@ public class BinaryTreeTraversal {
 
                 // if no left child
                 // pop stack, process the node
-                // then let p point to the right
+                // then let cur point to the right
             } else {
                 TreeNode pop = stack.pop();
                 list.add(pop.val);
