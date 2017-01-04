@@ -10,9 +10,9 @@ class KSortedArray {
         int total = 0;
 
         // add arrays to heap
-        for (int i = 0; i < arr.length; i++) {
-            queue.add(new ArrayContainer(arr[i], 0));
-            total = total + arr[i].length;
+        for (int i = 0; i < arr.length; ++i) {
+            queue.offer(new ArrayContainer(arr[i], 0));
+            total += arr[i].length;
         }
 
         int m = 0;

@@ -6,14 +6,14 @@ public class SortedArr2Tree {
 
         Node root = arr2BST(arr);
 
-        inOrder(root);
+        inOrderTraversal(root);
     }
 
-    public static void inOrder(Node cur) {
+    public static void inOrderTraversal(Node cur) {
         if (cur != null) {
-            inOrder(cur.left);
+            inOrderTraversal(cur.left);
             System.out.println(cur.val);
-            inOrder(cur.right);
+            inOrderTraversal(cur.right);
         }
     }
 
