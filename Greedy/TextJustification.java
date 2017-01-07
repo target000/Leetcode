@@ -3,7 +3,7 @@ import java.util.List;
 
 class TextJustification {
     public static void main(String[] args) {
-        
+
     }
 
     public List<String> fullJustify(String[] words, int maxWidth) {
