@@ -32,6 +32,7 @@ public class CharNormalization {
 
         int carry = 0;
 
+        // right to left scan just like when you do adding you would on scratch paper
         while (i >= 0 || j >= 0) {
             int sum = 0;
 
@@ -51,6 +52,8 @@ public class CharNormalization {
                 carry = 0;
             }
 
+            // inserting in the front most position
+            // conversely if sb.insert(sb.length(),'x') this appends the char into the last position
             sb.insert(0, (char) ((sum % 2) + '0'));
 
             i--;
