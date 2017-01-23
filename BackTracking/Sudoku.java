@@ -2,7 +2,7 @@ class Sodoku {
     public boolean isValidSudoku(char[][] board) {
         if (board == null || board.length != 9 || board[0].length != 9)
             return false;
-        // check each column
+        // check each row
         for (int i = 0; i < 9; i++) {
             boolean[] m = new boolean[9];
             for (int j = 0; j < 9; j++) {
@@ -15,7 +15,7 @@ class Sodoku {
             }
         }
 
-        // check each row
+        // check each column
         for (int j = 0; j < 9; j++) {
             boolean[] m = new boolean[9];
             for (int i = 0; i < 9; i++) {
@@ -44,20 +44,6 @@ class Sodoku {
         }
 
         return true;
-    }
-
-    public boolean isSameTree(TreeNode p, TreeNode q) {
-        if (p == null && q == null) {
-            return true;
-        }
-        if (p != null && q != null) {
-            if (p.val == q.val) {
-                return isSameTree(p.left, q.left) && isSameTree(q.right, p.right);
-            } else {
-                return false;
-            }
-        }
-        return false;
     }
 
 }

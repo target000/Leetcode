@@ -1,5 +1,7 @@
 public class IsSameTree {
+
     public boolean isSameTree(TreeNode p, TreeNode q) {
+        // termination condition
         if (p == null && q == null) {
             return true;
         }
@@ -14,4 +16,5 @@ public class IsSameTree {
 
         return false;
     }
+
 }
