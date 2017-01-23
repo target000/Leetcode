@@ -23,10 +23,11 @@ public class TestAnagram {
 
         return true;
     }
-    
-    
+
     // O(n) hashmap
 
     // O(nlogn)
+    // sort array
+    // run thru them and test if they are equal
 
 }
