@@ -1,6 +1,8 @@
 import java.util.Arrays;
 import java.util.Stack;
 
+// http://www.geeksforgeeks.org/largest-rectangle-under-histogram/
+
 public class MaxRectangleHistogram {
     public int largestRectangleArea(int[] height) {
         Stack<Integer> stack = new Stack<Integer>();
