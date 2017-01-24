@@ -5,8 +5,8 @@ class SortedSubsequence {
     // A function to find a sorted subsequence of size 3
     static void find3Numbers(int arr[]) {
         int n = arr.length;
-        int max = n - 1; // Index of maximum element from right side
-        int min = 0; // Index of minimum element from left side
+        int maxIndex = n - 1; // Index of maximum element from right side
+        int minIndex = 0; // Index of minimum element from left side
         int i;
 
         // Create an array that will store index of a smaller
@@ -15,11 +15,11 @@ class SortedSubsequence {
         int[] smaller = new int[n];
         smaller[0] = -1; // first entry will always be -1
         for (i = 1; i < n; i++) {
-            if (arr[i] <= arr[min]) {
-                min = i;
+            if (arr[i] <= arr[minIndex]) {
+                minIndex = i;
                 smaller[i] = -1;
             } else
-                smaller[i] = min;
+                smaller[i] = minIndex;
         }
 
         // Create another array that will store index of a
@@ -28,11 +28,11 @@ class SortedSubsequence {
         int[] greater = new int[n];
         greater[n - 1] = -1; // last entry will always be -1
         for (i = n - 2; i >= 0; i--) {
-            if (arr[i] >= arr[max]) {
-                max = i;
+            if (arr[i] >= arr[maxIndex]) {
+                maxIndex = i;
                 greater[i] = -1;
             } else
-                greater[i] = max;
+                greater[i] = maxIndex;
         }
 
         // Now find a number which has both a greater number
