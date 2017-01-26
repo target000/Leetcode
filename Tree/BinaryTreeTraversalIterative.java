@@ -5,10 +5,10 @@ public class BinaryTreeTraversalIterative {
     public ArrayList<Integer> inorderTraversal(TreeNode root) {
         // IMPORTANT: Please reset any member data you declared, as
         // the same Solution instance will be reused for each test case.
-        ArrayList<Integer> lst = new ArrayList<Integer>();
+        ArrayList<Integer> list = new ArrayList<Integer>();
 
         if (root == null)
-            return lst;
+            return list;
 
         Stack<TreeNode> stack = new Stack<TreeNode>();
         // define a pointer to track nodes
@@ -27,11 +27,11 @@ public class BinaryTreeTraversalIterative {
                 // then let p point to the right
             } else {
                 TreeNode t = stack.pop();
-                lst.add(t.val);
+                list.add(t.val);
                 p = t.right;
             }
         }
 
-        return lst;
+        return list;
     }
 }
