@@ -1,6 +1,3 @@
-import java.io.InputStream;
-import java.util.LinkedList;
-import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -10,7 +7,7 @@ import java.io.IOException;
 
 public class ReadFromBufferedReader {
 
-    private static final String FILENAME = "C:\\filename.txt";
+    private static final String FILENAME = "C:\\test.txt";
 
     public static void main(String[] args) {
 

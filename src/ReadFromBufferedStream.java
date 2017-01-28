@@ -8,7 +8,7 @@ public class ReadFromBufferedStream {
 
     public static void main(String[] args) {
 
-        File file = new File("C:\\testing.txt");
+        File file = new File("C:\\test.txt");
         FileInputStream fis = null;
         BufferedInputStream bis = null;
         DataInputStream dis = null;
