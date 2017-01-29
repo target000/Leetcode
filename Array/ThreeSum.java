@@ -16,32 +16,37 @@ public class ThreeSum {
         }
     }
 
-    public static List<List<Integer>> threeSum(int[] num) {
+    // additional requirements: 1) no duplicates allowed, 2) monotonically increasing
+    // basic idea: pre-sort the array and consider the array as 'first' + rest
+    // the rest should be -1 * first
+    // maintain two pointers low and high going from two directions in the rest arr and progressively sweep bidirectionally
+    // Time complexity: sort is nlogn but for nested is O(n^2) and thus dominating. O(n^2) algorithm
+    public static List<List<Integer>> threeSum(int[] arr) {
 
-        Arrays.sort(num);
-        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        Arrays.sort(arr);
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
 
-        for (int i = 0; i < num.length - 2; i++) {
-            if (i == 0 || (i > 0 && num[i] != num[i - 1])) {
+        for (int i = 0; i < arr.length - 2; i++) {
+            if (i == 0 || (i > 0 && arr[i] != arr[i - 1])) {
 
                 int low = i + 1;
-                int high = num.length - 1;
-                int sum = 0 - num[i];
+                int high = arr.length - 1;
+                int sum = 0 - arr[i];
 
                 while (low < high) {
-                    if (num[low] + num[high] == sum) {
-                        res.add(Arrays.asList(num[i], num[low], num[high]));
-                        while (low < high && num[low] == num[low + 1]) {
+                    if (arr[low] + arr[high] == sum) {
+                        result.add(Arrays.asList(arr[i], arr[low], arr[high]));
+                        while (low < high && arr[low] == arr[low + 1]) {
                             // handles duplicate, as per problem statement it doesn't allow duplicates
                             low++;
                         }
-                        while (low < high && num[high] == num[high - 1]) {
+                        while (low < high && arr[high] == arr[high - 1]) {
                             // handles duplicate, as per problem statement it doesn't allow duplicates
                             high--;
                         }
                         low++;
                         high--;
-                    } else if (num[low] + num[high] < sum) {
+                    } else if (arr[low] + arr[high] < sum) {
                         low++;
                     } else {
                         high--;
@@ -49,7 +54,7 @@ public class ThreeSum {
                 }
             }
         }
-        return res;
+        return result;
     }
 
 }
