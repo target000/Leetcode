@@ -1,21 +1,44 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Subsets {
-    public List<List<Integer>> subsets(int[] nums) {
-        List<List<Integer>> list = new ArrayList<>();
-        Arrays.sort(nums);
-        backtrack(list, new ArrayList<>(), nums, 0);
+
+    public static void main(String[] args) {
+        int[] testArr = { 1, 2, 3 };
+
+        List<List<Integer>> out = subsets(testArr);
+
+        for (List<Integer> list : out) {
+            for (Integer integer : list) {
+                System.out.print(integer + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static List<List<Integer>> subsets(int[] arr) {
+        if (arr == null || arr.length == 0) {
+            return null;
+        }
+
+        List<List<Integer>> list = new ArrayList<List<Integer>>();
+        // Personally I don't think it is necessary to presort the array
+        // Arrays.sort(nums);
+        backtrack(list, new ArrayList<Integer>(), arr, 0);
+
         return list;
     }
 
-    private void backtrack(List<List<Integer>> list, List<Integer> tempList, int[] nums, int start) {
-        list.add(new ArrayList<>(tempList));
-        for (int i = start; i < nums.length; i++) {
-            tempList.add(nums[i]);
-            backtrack(list, tempList, nums, i + 1);
+    // note this is like the string permutation problem
+    private static void backtrack(List<List<Integer>> listOfList, List<Integer> tempList, int[] arr, int startIndex) {
+
+        listOfList.add(new ArrayList<Integer>(tempList));
+
+        for (int i = startIndex; i < arr.length; i++) {
+            tempList.add(arr[i]);
+            backtrack(listOfList, tempList, arr, i + 1);
             tempList.remove(tempList.size() - 1);
         }
+
     }
 }
