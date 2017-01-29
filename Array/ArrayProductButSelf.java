@@ -1,4 +1,4 @@
-// apparently the best way to do it is to mutiple all numbers and divide by current arr value
+// apparently the best way to do it is to multiple all numbers and divide by current arr value
 // but it is against the requirement
 
 // basically do a forward sweep to cumulatively find the product
