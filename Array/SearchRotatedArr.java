@@ -1,3 +1,4 @@
+// the key is determine which interval the target falls into
 
 public class SearchRotatedArr {
     public static void main(String[] args) {

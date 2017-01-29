@@ -18,8 +18,8 @@ public class ThreeSum {
 
     // Additional requirements: 1) no duplicates are allowed 2) monotonically increasing triplets
     // Basic idea: pre-sort the array and consider the array as 'first' + 'rest'
-    // the rest should be -1 * first
-    // maintain two pointers low and high going from two directions in the rest array and progressively sweep bidirectionally
+    // The rest should be -arr[i]
+    // Maintain two pointers low and high going from two directions in the rest array and progressively sweep bidirectionally
     // Time complexity: sort is nlogn but for nested is O(n^2) and thus dominating.
     // O(n^2) algorithm
     public static List<List<Integer>> threeSum(int[] arr) {
@@ -34,7 +34,7 @@ public class ThreeSum {
                 int high = arr.length - 1;
                 int sum = 0 - arr[i];
 
-                // go check the 'rest' of the arr
+                // go check the 'rest' of the arr to see if they add up to be -arr[i] and thus resulting arr[i] + arr[j] + arr[k] == 0
                 while (low < high) {
                     if (arr[low] + arr[high] == sum) {
                         result.add(Arrays.asList(arr[i], arr[low], arr[high]));
