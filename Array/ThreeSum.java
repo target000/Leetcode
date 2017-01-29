@@ -4,47 +4,52 @@ import java.util.List;
 
 public class ThreeSum {
 
-    public List<List<Integer>> threeSum(int[] nums) {
-        List<List<Integer>> result = new ArrayList<List<Integer>>();
+    public static void main(String[] args) {
+        int[] testArr = { 1, 3, 2, 1, -2, 1, 4, 3, -3 };
+        List<List<Integer>> res = threeSum(testArr);
 
-        if (nums == null || nums.length < 3)
-            return result;
+        for (List<Integer> list : res) {
+            for (Integer integer : list) {
+                System.out.print(integer + " ");
+            }
+            System.out.println();
+        }
+    }
 
-        Arrays.sort(nums);
+    public static List<List<Integer>> threeSum(int[] num) {
 
-        for (int i = 0; i < nums.length - 2; i++) {
-            if (i == 0 || nums[i] > nums[i - 1]) {
-                int j = i + 1;
-                int k = nums.length - 1;
+        Arrays.sort(num);
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
 
-                while (j < k) {
-                    if (nums[i] + nums[j] + nums[k] == 0) {
-                        List<Integer> l = new ArrayList<Integer>();
-                        l.add(nums[i]);
-                        l.add(nums[j]);
-                        l.add(nums[k]);
-                        result.add(l);
+        for (int i = 0; i < num.length - 2; i++) {
+            if (i == 0 || (i > 0 && num[i] != num[i - 1])) {
 
-                        j++;
-                        k--;
+                int low = i + 1;
+                int high = num.length - 1;
+                int sum = 0 - num[i];
 
-                        // handle duplicate here
-                        while (j < k && nums[j] == nums[j - 1])
-                            j++;
-                        while (j < k && nums[k] == nums[k + 1])
-                            k--;
-
-                    } else if (nums[i] + nums[j] + nums[k] < 0) {
-                        j++;
+                while (low < high) {
+                    if (num[low] + num[high] == sum) {
+                        res.add(Arrays.asList(num[i], num[low], num[high]));
+                        while (low < high && num[low] == num[low + 1]) {
+                            // handles duplicate, as per problem statement it doesn't allow duplicates
+                            low++;
+                        }
+                        while (low < high && num[high] == num[high - 1]) {
+                            // handles duplicate, as per problem statement it doesn't allow duplicates
+                            high--;
+                        }
+                        low++;
+                        high--;
+                    } else if (num[low] + num[high] < sum) {
+                        low++;
                     } else {
-                        k--;
+                        high--;
                     }
                 }
             }
-
         }
-
-        return result;
+        return res;
     }
 
 }
