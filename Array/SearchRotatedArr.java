@@ -10,31 +10,35 @@ public class SearchRotatedArr {
         return binarySearch(nums, 0, nums.length - 1, target);
     }
 
-    public int binarySearch(int[] nums, int left, int right, int target) {
+    public int binarySearch(int[] arr, int left, int right, int target) {
         if (left > right)
             return -1;
 
         int mid = left + (right - left) / 2;
 
-        if (target == nums[mid])
+        if (target == arr[mid])
             return mid;
 
-        if (nums[left] <= nums[mid]) {
-            if (nums[left] <= target && target < nums[mid]) {
-                return binarySearch(nums, left, mid - 1, target);
+        // if arr[left] <= arr[mid] then arr is monotonically increasing from left to mid
+        // thus if target falls into this region, go recurse this region
+        // otherwise go recurse the other half
+        if (arr[left] <= arr[mid]) {
+            if (arr[left] <= target && target < arr[mid]) {
+                return binarySearch(arr, left, mid - 1, target);
             } else {
-                return binarySearch(nums, mid + 1, right, target);
+                return binarySearch(arr, mid + 1, right, target);
             }
         } else {
-            if (nums[mid] < target && target <= nums[right]) {
-                return binarySearch(nums, mid + 1, right, target);
+            if (arr[mid] < target && target <= arr[right]) {
+                return binarySearch(arr, mid + 1, right, target);
             } else {
-                return binarySearch(nums, left, mid - 1, target);
+                return binarySearch(arr, left, mid - 1, target);
             }
         }
     }
 
     // Iterative
+    // In the iterative solution, basically just have to update the index of low and high
     public class Solution {
         public int search(int[] A, int target) {
             int lo = 0;
