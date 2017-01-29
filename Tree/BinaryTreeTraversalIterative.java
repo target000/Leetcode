@@ -97,6 +97,7 @@ class BinaryTree {
 
             // Pop the top item from stack and print it
             Node mynode = nodeStack.peek();
+            // here is the visit part
             System.out.print(mynode.data + " ");
             nodeStack.pop();
 
