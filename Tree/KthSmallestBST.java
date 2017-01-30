@@ -1,11 +1,13 @@
 public class KthSmallestBST {
     public int kthSmallest(TreeNode root, int k) {
-        int count = countNodes(root.left);
-        if (k <= count) {
+        int countLeftSubTree = countNodes(root.left);
+
+        if (k <= countLeftSubTree) {
             return kthSmallest(root.left, k);
-        } else if (k > count + 1) {
-            return kthSmallest(root.right, k - 1 - count); // 1 is counted as current node
+        } else if (k > countLeftSubTree + 1) {
+            return kthSmallest(root.right, k - 1 - countLeftSubTree); // 1 is counted as current node
         }
+
         return root.val;
     }
 
@@ -13,6 +15,7 @@ public class KthSmallestBST {
         if (n == null) {
             return 0;
         }
+
         return 1 + countNodes(n.left) + countNodes(n.right);
     }
 }
